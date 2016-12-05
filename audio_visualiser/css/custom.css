@@ -28,7 +28,7 @@ header {
     min-height: auto;
     text-align: center;
     color: #fff;
-    background-image: url('../images/header.jpg');
+    background-image: url('../images/vis_header_blurred.jpg');
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -37,6 +37,7 @@ header {
 }
 
 header .header-content {
+    overflow: auto;
     position: relative;
     width: 100%;
     padding: 100px 15px 70px;
@@ -145,7 +146,7 @@ header .header-content .header-content-inner p {
 }
 
 .item-1 {
-	background: url('../images/writing.jpg');
+	background: url('../images/vis_header_blurred.jpg');
 	}
 	
 .item-2 {
@@ -428,4 +429,13 @@ img::-moz-selection {
 
 .bg-primary {
     background-color: #5797f2;
+}
+
+.selector {
+    color: #222;
+}
+
+.selector_button {
+    background-color: #eee;
+    color: #222;
 }

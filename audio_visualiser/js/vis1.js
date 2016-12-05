@@ -1,4 +1,13 @@
 var song;
+var w = window.innerWidth
+|| document.documentElement.clientWidth
+|| document.body.clientWidth;
+
+var h = window.innerHeight
+|| document.documentElement.clientHeight
+|| document.body.clientHeight;
+
+var filePath = '/assets/Sail.mp3';
 
 // Useful methods
 /*
@@ -10,11 +19,12 @@ function preload() {
   //song = loadSound('/assets/FeelGoodInc.mp3');
   //song = loadSound('/assets/CigarettesInTheTheatre.mp3');
   //song = loadSound('/assets/spacey.mp3');
-  song = loadSound('/js/assets/numb.mp3');
+  filePath = 'assets/'.concat(document.cookie).concat('.mp3');
+  song = loadSound(filePath);
 }
 
 function setup() {
-    createCanvas(1080, 720);
+    createCanvas(w, h);
     song.play();
 
     fft = new p5.FFT();
