@@ -1,4 +1,5 @@
 var song;
+var fft;
 var w = window.innerWidth
 || document.documentElement.clientWidth
 || document.body.clientWidth;
@@ -12,14 +13,6 @@ var filePath = '/assets/Sail.mp3';
 // Useful methods
 /*
 getPeaks()
-*/
-
-/*
-  apply inverse equal loudness curve
-  OR
-  a-weighting 
-
-  20-20000Hz
 */
 
 function preload() {
@@ -60,15 +53,12 @@ function draw() {
   // Get the average (root mean square) amplitude
   var rms = analyzer.getLevel();
   var spectrum = fft.analyze();
-  //var octaveBands = fft.getOctaveBands(31, 15.625);
-  //var spectrum = fft.logAverages(10, 20);
-  //console.log("spectrum");
-  //console.log(spectrum);
+  //var octaveBands = fft.getOctaveBands();
+  spectrum = fft.logAverages(10, 20);
+  console.log("spectrum");
+  console.log(spectrum);
 
   visualiser(spectrum, rms);
-
-  //fill(black);
-  //ellipse(0, 0, (rms*150)+160, (rms*150)+160);
 }
 
 function visualiser(spectrum, rms) {
@@ -106,9 +96,8 @@ function visualiser(spectrum, rms) {
     } else {
       fill(c10);
     }
+    fill(c10);
     rect(0, 60+(rms*100), 2, spectrum[i]);
-    //rect(x, y, w, h)
     rotate(spectrum.length/360);
-    //rotate(PI/70);
   }
 }
