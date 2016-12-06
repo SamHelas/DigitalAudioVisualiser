@@ -1,32 +1,12 @@
 var song;
-var w = window.innerWidth
-|| document.documentElement.clientWidth
-|| document.body.clientWidth;
+var fft;
+var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
-var h = window.innerHeight
-|| document.documentElement.clientHeight
-|| document.body.clientHeight;
+var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
 var filePath = '/assets/Sail.mp3';
 
-// Useful methods
-/*
-getPeaks()
-*/
-
-/*
-  apply inverse equal loudness curve
-  OR
-  a-weighting 
-
-  20-20000Hz
-*/
-
 function preload() {
-  //song = loadSound('/assets/OGreenWorld.mp3');
-  //song = loadSound('/assets/FeelGoodInc.mp3');
-  //song = loadSound('/assets/CigarettesInTheTheatre.mp3');
-  //song = loadSound('/assets/spacey.mp3');
   filePath = 'assets/'.concat(document.cookie).concat('.mp3');
   song = loadSound(filePath);
 }
@@ -60,15 +40,8 @@ function draw() {
   // Get the average (root mean square) amplitude
   var rms = analyzer.getLevel();
   var spectrum = fft.analyze();
-  //var octaveBands = fft.getOctaveBands(31, 15.625);
-  //var spectrum = fft.logAverages(10, 20);
-  //console.log("spectrum");
-  //console.log(spectrum);
 
   visualiser(spectrum, rms);
-
-  //fill(black);
-  //ellipse(0, 0, (rms*150)+160, (rms*150)+160);
 }
 
 function visualiser(spectrum, rms) {
@@ -82,8 +55,10 @@ function visualiser(spectrum, rms) {
   var c8 = color('#6e3eb7');
   var c9 = color('#e04cd6');
   var c10 = color('#ed1559');
+
   translate(width/2, height/2);
   noStroke();
+
   for (var i = 0; i < spectrum.length; i ++) {
     if (spectrum[i] >= 0 && spectrum[i] < 25) {
       fill(c1);
@@ -106,9 +81,8 @@ function visualiser(spectrum, rms) {
     } else {
       fill(c10);
     }
+
     rect(0, 60+(rms*100), 2, spectrum[i]);
-    //rect(x, y, w, h)
     rotate(spectrum.length/360);
-    //rotate(PI/70);
   }
 }
