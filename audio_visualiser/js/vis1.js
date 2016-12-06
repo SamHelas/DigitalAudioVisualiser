@@ -1,15 +1,17 @@
 var song;
-var songName = Sail;
+var songName = "Sail";
 var fft;
 var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
 var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
-var filePath = '/assets/Sail.mp3';
+var filePath;
 
 function preload() {
   if (document.cookie != null) {
     filePath = 'assets/'.concat(document.cookie).concat('.mp3');
+  } else {
+    filePath = "/assets/Sail.mp3";
   }
   song = loadSound(filePath);
 }
