@@ -4,7 +4,3 @@ $('#siteNav').affix({
 		top: 100
 	}
 })
-
-function getSong() {
-	alert('Hello');
-}
