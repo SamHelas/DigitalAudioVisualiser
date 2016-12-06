@@ -86,22 +86,29 @@ function visualiser(spectrum, rms) {
 
  noStroke();
  if (rms>0.5) {
-  fill(c1);
- } else if(rms>0.4) {
+  fill(c10);
+ } else if(rms>0.45) {
   fill(c2);
- } else if (rms>0.3) {
+ } else if (rms>0.4) {
   fill(c3);
- } else if(rms>0.2) {
+ } else if(rms>0.35) {
   fill(c4);
- } else if(rms>0.1) {
+ } else if(rms>0.3) {
   fill(c5); 
-} else {fill(c6);}
+} else if(rms>0.25) {
+  fill(c6);
+ } else if(rms>0.2) {
+  fill(c7); 
+  }  else if(rms>0.15) {
+  fill(c8);
+ } else if(rms>0.1) {
+  fill(c9);
+  } else {fill(c5);}
 
 
   
-  for (var x = 0; x < spectrum.length; x++) {
-    ellipse(x*4, 3*(height/4)-spectrum[x], rms*50, rms*50);
-  }
+  for (var x = 0; x < spectrum.length; x=x+2) {
 
-  
+    ellipse(x*8, 3*(height/4)-spectrum[x], rms*50, rms*50);
+ }
 }
