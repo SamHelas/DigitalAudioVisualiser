@@ -1,11 +1,7 @@
 var song;
-var w = window.innerWidth ||
-  document.documentElement.clientWidth ||
-  document.body.clientWidth;
+var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
-var h = window.innerHeight ||
-  document.documentElement.clientHeight ||
-  document.body.clientHeight;
+var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
 var filePath;
 
