@@ -59,30 +59,34 @@ function visualiser(spectrum, rms) {
   var c10 = color('#ed1559');
 
   noStroke();
-  if (rms > 0.5) {
-    fill(c10);
-  } else if (rms > 0.45) {
-    fill(c2);
-  } else if (rms > 0.4) {
-    fill(c3);
-  } else if (rms > 0.35) {
-    fill(c4);
-  } else if (rms > 0.3) {
-    fill(c5);
-  } else if (rms > 0.25) {
-    fill(c6);
-  } else if (rms > 0.2) {
-    fill(c7);
-  } else if (rms > 0.15) {
-    fill(c8);
-  } else if (rms > 0.1) {
-    fill(c9);
-  } else {
-    fill(c5);
-  }
   rect(0, height/2, width, 1);
-  for (var x = 0; x < spectrum.length; x = x + 1) {
-     rect(width/2, height/2-spectrum[x]/2, 1, spectrum[x]);
+  translate(width / 2, height/2);
+  for (var x = 0; x < spectrum.length; x = x + 2) {
+
+    if (spectrum[x] >= 0 && spectrum[x] < 25) {
+      fill(c10);
+    } else if (spectrum[x] >= 25 && spectrum[x] < 50) {
+      fill(c9);
+    } else if (spectrum[x] >= 50 && spectrum[x] < 75) {
+      fill(c8);
+    } else if (spectrum[x] >= 75 && spectrum[x] < 100) {
+      fill(c7);
+    } else if (spectrum[x] >= 100 && spectrum[x] < 125) {
+      fill(c6);
+    } else if (spectrum[x] >= 125 && spectrum[x] < 150) {
+      fill(c5);
+    } else if (spectrum[x] >= 150 && spectrum[x] < 175) {
+      fill(c4);
+    } else if (spectrum[x] >= 175 && spectrum[x] < 200) {
+      fill(c3);
+    } else if (spectrum[x] >= 200 && spectrum[x] < 225) {
+      fill(c2);
+    } else {
+      fill(c1);
+    }
+     rect(x, -spectrum[x]/2, 1, spectrum[x]);
+     rect(-x, -spectrum[x+1]/2, 1, spectrum[x+1]);
+
 
   }
 }
