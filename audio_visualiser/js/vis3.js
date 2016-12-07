@@ -8,6 +8,9 @@ var h = window.innerHeight ||
   document.body.clientHeight;
 
 var filePath;
+var spectrum_length = 1024;
+var freq_hi = 1024;
+var freq_lo = 0;
 
 function preload() {
   if (document.cookie != null) {
@@ -42,6 +45,7 @@ function draw() {
   // Get the average (root mean square) amplitude
   var rms = analyzer.getLevel();
   var spectrum = fft.analyze();
+  spectrum_length = spectrum.length;
 
   visualiser(spectrum, rms);
 }
@@ -59,9 +63,9 @@ function visualiser(spectrum, rms) {
   var c10 = color('#ed1559');
 
   noStroke();
-  rect(0, height/2, width, 1);
-  translate(width / 2, height/2);
-  for (var x = 0; x < spectrum.length; x = x + 2) {
+  rect(0, height / 2, width, 1);
+  translate(width / 2, height / 2);
+  for (var x = freq_lo; x < freq_hi; x = x + 2) {
 
     if (spectrum[x] >= 0 && spectrum[x] < 25) {
       fill(c10);
@@ -84,9 +88,21 @@ function visualiser(spectrum, rms) {
     } else {
       fill(c1);
     }
-     rect(x, -spectrum[x]/2, 2, spectrum[x]);
-     rect(-x, -spectrum[x+1]/2, 2, spectrum[x+1]);
-
+    rect(x, -spectrum[x] / 2, 2, spectrum[x]);
+    rect(-x, -spectrum[x + 1] / 2, 2, spectrum[x + 1]);
 
   }
 }
+
+$(function() {
+  $("#slider3").slider({
+    range: true,
+    min: 0,
+    max: spectrum_length,
+    values: [0, spectrum_length],
+    slide: function(event, ui) {
+      freq_lo = ui.values[0];
+      freq_hi = ui.values[1];
+    }
+  });
+});

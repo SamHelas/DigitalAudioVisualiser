@@ -3,6 +3,7 @@ body {
     width: 100%;
     height: 100%;
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+    background-color: #000;
 }
 
 a {
@@ -424,4 +425,14 @@ img::-moz-selection {
 .selector_button {
     background-color: #eee;
     color: #222;
+}
+
+div.slider-range {
+    position: relative;
+    width: 500px;
+    top: 100px;
+    margin: auto;
+    color: #bdeff9;
+    text-align: center;
+    background-color: #000;
 }
