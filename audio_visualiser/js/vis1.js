@@ -23,6 +23,7 @@ function setup() {
   //document.getElementById("myTitle").innerHTML = myTitle;
 
   createCanvas(w, h);
+
   song.play();
 
   fft = new p5.FFT();
@@ -38,16 +39,13 @@ function setup() {
 function draw() {
 
   var black = color('#000');
+  var white = color('#fff');
 
   background(black);
   angleMode(DEGREES);
 
-  // Get the average (root mean square) amplitude
   var rms = analyzer.getLevel();
   var spectrum = fft.analyze();
-
-  //var octaveBands = fft.getOctaveBands(31, 15.625);
-  //var spectrum = fft.logAverages(10, 20);
 
   visualiser(spectrum, rms);
 }
@@ -93,4 +91,5 @@ function visualiser(spectrum, rms) {
     rect(0, 60 + (rms * 100), 2, spectrum[i]);
     rotate(spectrum.length / 360);
   }
+
 }
