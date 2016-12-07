@@ -80,10 +80,9 @@ function visualiser(spectrum, rms) {
   } else {
     fill(c5);
   }
-
+  rect(0, height/2, width, 1);
   for (var x = 0; x < spectrum.length; x = x + 1) {
+     rect(width/2, height/2-spectrum[x]/2, 1, spectrum[x]);
 
-    rect(width/3, height/4 , 40, 40);
-   // height = height*1.25;
   }
 }
