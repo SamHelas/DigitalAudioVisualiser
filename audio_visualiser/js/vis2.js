@@ -78,7 +78,7 @@ function visualiser(spectrum, rms) {
   }
 
   for (var x = 0; x < spectrum.length; x = x + 2) {
-    ellipse(x * 8, 3 * (height / 4), 10, 10);
-    ellipse(x * 8, 3 * (height / 4) - spectrum[x], rms * 40, rms * 40);
+    ellipse(x * 4, 3 * (height / 4), 5, 5);
+    ellipse(x * 4, 3 * (height / 4) - spectrum[x], rms * 40, rms * 40);
   }
 }
