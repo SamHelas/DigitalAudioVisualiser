@@ -1,9 +1,16 @@
 var song;
-var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+var w = window.innerWidth ||
+  document.documentElement.clientWidth ||
+  document.body.clientWidth;
 
-var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+var h = window.innerHeight ||
+  document.documentElement.clientHeight ||
+  document.body.clientHeight;
 
 var filePath;
+var spectrum_length = 1024;
+var freq_hi = 1024;
+var freq_lo = 0;
 
 function preload() {
   if (document.cookie != null) {
@@ -38,6 +45,7 @@ function draw() {
   // Get the average (root mean square) amplitude
   var rms = analyzer.getLevel();
   var spectrum = fft.analyze();
+  spectrum_length = spectrum.length;
 
   visualiser(spectrum, rms);
 }
@@ -77,8 +85,21 @@ function visualiser(spectrum, rms) {
     fill(c5);
   }
 
-  for (var x = 0; x < spectrum.length; x = x + 2) {
+  for (var x = freq_lo; x < freq_hi; x = x + 2) {
     ellipse(x * 4, 3 * (height / 4), 5, 5);
     ellipse(x * 4, 3 * (height / 4) - spectrum[x], rms * 40, rms * 40);
   }
 }
+
+$(function() {
+  $("#slider3").slider({
+    range: true,
+    min: 0,
+    max: spectrum_length,
+    values: [0, spectrum_length],
+    slide: function(event, ui) {
+      freq_lo = ui.values[0];
+      freq_hi = ui.values[1];
+    }
+  });
+});
