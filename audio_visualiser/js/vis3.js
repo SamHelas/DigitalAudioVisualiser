@@ -84,8 +84,8 @@ function visualiser(spectrum, rms) {
     } else {
       fill(c1);
     }
-     rect(x, -spectrum[x]/2, 1, spectrum[x]);
-     rect(-x, -spectrum[x+1]/2, 1, spectrum[x+1]);
+     rect(x, -spectrum[x]/2, 2, spectrum[x]);
+     rect(-x, -spectrum[x+1]/2, 2, spectrum[x+1]);
 
 
   }
