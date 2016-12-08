@@ -430,9 +430,19 @@ img::-moz-selection {
 div.slider-range {
     position: relative;
     width: 500px;
-    top: 100px;
+    top: 80px;
     margin: auto;
-    color: #bdeff9;
+    color: rgba(255, 255, 255, .7);
     text-align: center;
     background-color: #000;
+}
+
+#songName {
+    position: relative;
+    margin: auto;
+    text-align: center;
+    top: 60px;
+    color: #5797f2!important;
+    font-size: 20px;
+    letter-spacing: 1em; 
 }

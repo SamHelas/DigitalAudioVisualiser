@@ -19,6 +19,7 @@ function preload() {
     filePath = '/assets/Sail.mp3';
   }
   song = loadSound(filePath);
+  document.getElementById("songName").innerHTML = document.cookie.toUpperCase();
 }
 
 function setup() {
