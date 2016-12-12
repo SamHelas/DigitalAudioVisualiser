@@ -65,7 +65,7 @@ function visualiser(spectrum, rms) {
 
   noStroke();
   rect(0, height / 2, width, 1);
-  translate(width / 2, height / 2);
+  //translate(width / 2, height / 2);
   for (var x = freq_lo; x < freq_hi; x = x + 2) {
 
     if (spectrum[x] >= 0 && spectrum[x] < 25) {
